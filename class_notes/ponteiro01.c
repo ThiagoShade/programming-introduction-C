@@ -5,7 +5,6 @@ void swapp(int* pa, int* pb);
 void swap (int x, int y) {
    
     int t;
-/marketplace
     t = x;
     x = y;
     y = t;
