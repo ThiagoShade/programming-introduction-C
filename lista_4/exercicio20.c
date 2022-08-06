@@ -1,12 +1,12 @@
 #include <stdio.h>
-#include <math.h>
+#include <string.h>
 
 int main() {
 
-    int i, i2, i3, marc;
-    int dig_dado, dig_fin;
-    char texto[100000] = {'\0'};
-    int numero = 0, peso, dig;
+    int i;
+    int dig_dado, dig_fin, n_acha;
+    char v[100001], fin[100001], maior;
+    int marc;
 
     while (1) {
 
@@ -14,37 +14,39 @@ int main() {
 
         if (dig_dado == 0 && dig_fin == 0) break;
 
-        scanf("%[^\n]%*c", texto);
+        memset(v, 0, 100001);
+        memset(fin, 0, 100001);
 
-        numero = 0;
-        peso = dig_fin - 1;
-        marc = 0;
-        for (i = 0; i < dig_fin; i++) {
+        scanf("%s%*c", v);
 
-            for (i2 = marc; i2 < dig_dado; i2++) {
-                if (i2 == i) {
-                    for (i3 = 0; i3 < i; i3++) {
-                        dig = *(texto+i) - 48;
-                        break;
-                    }
-                }
-                if (*(texto+i2+1) <= *(texto+i2)) {
-                    dig = *(texto+i2) - 48;
-                    printf("dígito atual: %d\n", dig);
-                    marc = i2+1;
-                    break;
+        n_acha = dig_fin;
+        while (1) {
+            maior = v[0];
+            marc = 0;
+            for (i = 0; i < (strlen(v)-n_acha+1); i++) {
+                if (v[i] > maior) {
+                    maior = v[i];
+                    marc = i;
                 }
             }
 
-            numero += dig * pow(10, peso);
-            peso--;
-            printf("numero atual: %d\n", numero);
-        }
+            fin[dig_fin-n_acha] = maior;
+            fin[dig_fin-n_acha+1] = '\0';
 
-        printf("%d", numero);
+            i = 0;
+            while(i != marc+1) {
+                v[i] = '/';
+                i++;
+            }
+
+            n_acha--;
+
+            if (n_acha == 0) break;
+        }
+        
+        printf("%s\n", fin);
 
     }
 
-
-    return 0;
+    
 }
