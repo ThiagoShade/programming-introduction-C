@@ -20,7 +20,7 @@ int main() {
 
     int i, j;
     int qtd_alunos;
-    aluno * a;
+    aluno * a = NULL;
 
     scanf("%d", &qtd_alunos);
 
