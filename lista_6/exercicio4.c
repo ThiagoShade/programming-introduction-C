@@ -43,6 +43,8 @@ int main() {
         printf("Vetor: (%.2lf, %.2lf, %.2lf, %.2lf) Norma: %.2lf\n", v1[i].n[0], v1[i].n[1], v1[i].n[2], v1[i].n[3], v1[i].norma);          
         
     }
+    
+    free(v1);
 
     return 0;
 }
