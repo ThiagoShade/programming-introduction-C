@@ -55,6 +55,8 @@ int main() {
     for (i = 0; i < qtd_alunos; i++) {
         printf("Matric.: %d Nome: %s Data Nasc: %d/%d/%d\n", a[i].matricula, a[i].nome, a[i].nasc_dia, a[i].nasc_mes, a[i].nasc_ano);
     }
+    
+    free(a);
 
     return 0;
 }
