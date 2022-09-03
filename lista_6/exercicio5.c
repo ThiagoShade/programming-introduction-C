@@ -50,6 +50,9 @@ int main() {
         printf("\n");
 
     }
+    
+    free(cursos);
+    free(alunos);
 
     return 0;
 }
