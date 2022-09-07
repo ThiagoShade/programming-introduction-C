@@ -55,7 +55,7 @@ int main() {
     for (i = 0; i < qtd_alunos; i++) {
         printf("Matric.: %d Nome: %s Data Nasc: %d/%d/%d\n", a[i].matricula, a[i].nome, a[i].nasc_dia, a[i].nasc_mes, a[i].nasc_ano);
     }
-    
+
     free(a);
 
     return 0;
@@ -63,43 +63,9 @@ int main() {
 
 void switch_aluno_prox(aluno * v) {
 
-    int i;
-    int aux;
-    char aux_c[201];
+    aluno aux;
 
-    aux = v->matricula;
-    v->matricula = (v+1)->matricula;
-    (v+1)->matricula = aux;
-
-    aux = v->nasc_dia;
-    v->nasc_dia = (v+1)->nasc_dia;
-    (v+1)->nasc_dia = aux;
-
-    aux = v->nasc_mes;
-    v->nasc_mes = (v+1)->nasc_mes;
-    (v+1)->nasc_mes = aux;
-
-    aux = v->nasc_ano;
-    v->nasc_ano = (v+1)->nasc_ano;
-    (v+1)->nasc_ano = aux;
-
-    i = 0;
-    while (v->nome[i] != '\0') {
-        *(aux_c+i) = v->nome[i];
-        i++;
-    }
-    *(aux_c+i+1) = '\0';
-    i = 0;
-    while ((v+1)->nome[i] != '\0') {
-        v->nome[i] = (v+1)->nome[i];
-        i++;
-    }
-    v->nome[i+1] = '\0';
-    i = 0;
-    while (*(aux_c+i) != '\0') {
-        (v+1)->nome[i] = *(aux_c+i);
-        i++;
-    }
-    (v+1)->nome[i+1] = '\0';
-
+    aux = *(v);
+    *(v) = *(v+1);
+    *(v+1) = aux;
 }
